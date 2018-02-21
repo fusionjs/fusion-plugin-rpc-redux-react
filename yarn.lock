@@ -2283,13 +2283,13 @@ fusion-core@^1.0.0:
     node-mocks-http "^1.6.6"
     toposort "^1.0.6"
 
-fusion-plugin-rpc@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/fusion-plugin-rpc/-/fusion-plugin-rpc-1.0.1.tgz#d4dadd59a9a054c18526a0ef42436e9eecf0e31b"
+fusion-plugin-rpc@1.0.3-0:
+  version "1.0.3-0"
+  resolved "https://unpm.uberinternal.com/fusion-plugin-rpc/-/fusion-plugin-rpc-1.0.3-0.tgz#7d0c4c8ca181f9813f0c23bc7a562ed7e5afd6d1"
   dependencies:
     body-parser "^1.18.2"
     koa-bodyparser "4.2.0"
-    rollup "0.55.5"
+    rollup "0.56.0"
 
 fusion-plugin-universal-events@^1.0.1:
   version "1.0.1"
@@ -4134,9 +4134,9 @@ rollup-pluginutils@^2.0.1:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
 
-rollup@0.55.5:
-  version "0.55.5"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.55.5.tgz#2f88c300f7cf24b5ec2dca8a6aba73b04e087e93"
+rollup@0.56.0:
+  version "0.56.0"
+  resolved "https://unpm.uberinternal.com/rollup/-/rollup-0.56.0.tgz#4aefe9cef84a01ac3245e3fbba155e38dc2cc2e8"
 
 rollup@^0.55.1:
   version "0.55.3"
