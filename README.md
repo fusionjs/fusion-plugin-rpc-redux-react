@@ -147,19 +147,6 @@ You can register a value of type `RPCHandlers` or a Plugin that provides a value
 
 Required. Browser-only. See [https://github.com/fusionjs/fusion-tokens#fetchtoken](https://github.com/fusionjs/fusion-tokens#fetchtoken)
 
-```js
-// src/main.js
-import {RPCHandlersToken} from 'fusion-plugin-rpc';
-import UniversalEvents, {UniversalEventsToken} from 'fusion-plugin-universal-events';
-import {FetchToken} from 'fusion-tokens';
-import Redux, {ReduxToken, ReducerToken} from 'fusion-plugin-react-redux';
-
-app.register(UniversalEventsToken, UniversalEvents);
-__NODE__
-  ? app.register(RPCHandlersToken, handlers);
-  : app.register(FetchToken, fetch);
-```
-
 ##### `ReduxToken`
 
 Required. See [https://github.com/fusionjs/fusion-plugin-react-redux](https://github.com/fusionjs/fusion-plugin-react-redux)
