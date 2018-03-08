@@ -177,6 +177,7 @@ const hoc:HOC = withRPCRedux(rpcId: string, {
   mapStateToParams: ?(state: any) => any,
   transformParams: ?(params: any) => any,
 })
+
 ```
 
 * `rpcId: string` - The name of the RPC method to expose in the component's props
