@@ -2,7 +2,27 @@
 
 [![Build status](https://badge.buildkite.com/c16ece6ba0a81b30d11d69cb90b8f4d77a0967860144d12f44.svg?branch=master)](https://buildkite.com/uberopensource/fusion-plugin-rpc-redux-react)
 
-A plugin for integrating web-rpc, redux, and react.
+A plugin for integrating [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call), redux, and react.
+
+Provides a higher order component that connects RPC methods to Redux as well as React component props.
+
+RPC is a natural way of expressing that a server-side function should be run in response to a client-side function call. Unlike [RESTful architectures](https://en.wikipedia.org/wiki/Representational_state_transfer), RPC-based architectures are not required to conform to statelessness constraints and are free to return session-scoped data. Additionally, the semantics of RPC calls are not constrained by the availability of suitably-descriptive HTTP methods and RPC calls can express complex state change requests more naturally as verbs (e.g. `returnProduct(id)`) rather than object-orientation (e.g. `PATCH /api/orders/:id`).
+
+---
+
+### Table of contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [Setup](#setup)
+* [API](#api)
+  * [Registration API](#registration-api)
+  * [Dependencies](#dependencies)
+  * [`withRPCRedux`](#withrpcredux)
+  * [`withRPCReactor`](#withrpcreactor)
+  * [`mock`](#mock)
+* [Other examples](#other-examples)
+  > > > > > > > Stashed changes
 
 ---
 
@@ -164,7 +184,7 @@ Below is an example of consuming the state and RPC methods that are made availab
 import React from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
-import {incrementReactor} from './reactors/increment.js'
+import {incrementReactor} from './reactors/increment.js';
 
 function Example({count, loading, error, increment}) {
   return (
@@ -181,7 +201,7 @@ function Example({count, loading, error, increment}) {
 
 const hoc = compose(
   incrementReactor,
-  connect(({count, loading, error}) => ({count, loading, error})),
+  connect(({count, loading, error}) => ({count, loading, error}))
 );
 export default hoc(Example);
 ```
@@ -217,11 +237,11 @@ __NODE__
 
 ##### Required dependencies
 
-Name | Type | Description
--|-|-
-`UniversalEventsToken` | `UniversalEvents` | An event emitter plugin, such as the one provided by [`fusion-plugin-universal-events`](https://github.com/fusionjs/fusion-plugin-universal-events).
-`RPCHandlersToken` | `Object<(...args: any) => Promise>` | A map of server-side RPC method implementations.  Server-only.
-`FetchToken` | `(url: string, options: Object) => Promise` | A [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) implementation.  Browser-only.
+| Name                   | Type                                        | Description                                                                                                                                          |
+| ---------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `UniversalEventsToken` | `UniversalEvents`                           | An event emitter plugin, such as the one provided by [`fusion-plugin-universal-events`](https://github.com/fusionjs/fusion-plugin-universal-events). |
+| `RPCHandlersToken`     | `Object<(...args: any) => Promise>`         | A map of server-side RPC method implementations. Server-only.                                                                                        |
+| `FetchToken`           | `(url: string, options: Object) => Promise` | A [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) implementation. Browser-only.                                                |
 
 #### `withRPCRedux`
 
@@ -235,6 +255,7 @@ const NewComponent = withRPCRedux('rpcId', {
 ```
 
 #### `withRPCReactor`
+
 ```js
 import {withRPCReactor} from 'fusion-plugin-rpc-redux-react';
 const NewComponent = withRPCReactor('rpcId', {
@@ -257,10 +278,10 @@ The package also exports a mock rpc plugin which can be useful for testing. For 
 import {mock as MockRPC} from 'fusion-plugin-rpc-redux-react';
 app.plugin(mock, {
   handlers: {
-    getUser: (args) => {
+    getUser: args => {
       return {
-        mock: 'data',
-      }
+        mock: 'data'
+      };
     }
   }
 });
